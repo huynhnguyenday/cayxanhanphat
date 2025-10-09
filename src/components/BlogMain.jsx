@@ -55,10 +55,10 @@ const BlogMain = () => {
     <div className="bg-[#f9f9f9] py-12 font-sans">
       <div className="mx-auto max-w-screen-xl">
         <div className="mb-8 text-center">
-          <div className="text-4xl font-bold text-[#633402]">
+          <div className="text-4xl font-josefin font-bold text-[#00864a]">
             Tin mới nóng hổi
           </div>
-          <div className="mx-auto my-4 mb-14 h-1 w-12 bg-[#633c02]"></div>
+          <div className="mx-auto my-4 mb-14 h-1 w-12 bg-[#00864a]"></div>
         </div>
         {loading ? (
           // Hiển thị phần loading nếu dữ liệu chưa được tải

@@ -67,10 +67,10 @@ const ProductSlider = () => {
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}
     >
-      <div className="slider-title my-6 text-center text-4xl font-bold text-[#633c02]">
+      <div className="slider-title my-6 text-center text-4xl font-josefin font-bold text-[#00864a]">
         Sản phẩm bán chạy
       </div>
-      <div className="divider mx-auto mb-14 h-1 w-12 bg-[#633c02]"></div>
+      <div className="divider mx-auto mb-14 h-1 w-12 bg-[#00864a]"></div>
       {loading ? (
         // Hiển thị phần loading nếu dữ liệu chưa được tải
         <div className="flex h-[255px] w-full items-center justify-center lg:h-[350px]">
@@ -123,7 +123,7 @@ const ProductSlider = () => {
                   HOT
                 </div>
                 <div className="product-info mb-10 mt-2">
-                  <h6 className="product-name font-josefin text-xl line-clamp-1 font-bold text-[#00561e]">
+                  <h6 className="product-name line-clamp-1 font-josefin text-xl font-bold text-[#00561e]">
                     <Link to={`/detailfood/${product._id}`}>
                       {product.name.split(" ").slice(0, 4).join(" ")}
                       {/* Giới hạn 20 từ */}
@@ -144,7 +144,7 @@ const ProductSlider = () => {
                   </div>
                 </div>
 
-                <div className="red-button absolute bottom-0 left-0 w-full opacity-100 lg:opacity-0 transition-opacity duration-300 ease-in-out lg:group-hover:opacity-100">
+                <div className="red-button absolute bottom-0 left-0 w-full opacity-100 transition-opacity duration-300 ease-in-out lg:opacity-0 lg:group-hover:opacity-100">
                   <button
                     onClick={() => handleAddToCart(product)}
                     className="w-full cursor-pointer bg-[#d88453] py-3 text-sm font-semibold text-white transition-colors duration-300 ease-in-out hover:bg-[#633c02]"

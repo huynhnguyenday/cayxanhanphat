@@ -31,7 +31,7 @@ const NavbarLink = () => {
             FlyoutContent={PricingContentMenu}
             isMobile={isMobile}
           >
-            THỰC ĐƠN
+            SẢN PHẨM 
           </FlyoutLink>
         </li>
         <li className="w-full border-b-[1px] border-gray-200 py-4 sm:w-max sm:border-none sm:py-0">

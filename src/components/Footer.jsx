@@ -34,14 +34,16 @@ const Footer = () => {
               custom={0}
               variants={itemVariants}
             >
-              <h2 className="mb-4 font-oswald text-4xl font-bold">
-                BAMOS<span className="text-[#C63402]">COFFEE</span>
+              <h2 className="mb-4 font-oswald text-4xl font-bold text-[#633c02]">
+                CÂY CẢNH <span className="text-[#00864a]">AN PHÁT</span>
               </h2>
               <p className="font-josefin text-base leading-relaxed">
-                Bamos định vị sẽ là thương hiệu cafe hoạt động 24/7 với không
-                gian sân vườn rộng rãi kết hợp cùng đa dạng các hoạt động phù
-                hợp cho cả các bạn trẻ, sinh viên cũng như là nơi tụ tập cuối
-                tuần cho gia đình, nhóm bạn.
+                Cây Cảnh An Phát là điểm đến cho những ai yêu thiên nhiên và
+                muốn mang sắc xanh vào không gian sống. Với đa dạng các loại cây
+                được chăm sóc tỉ mỉ, chúng tôi mang đến sự lựa chọn phong phú
+                cho mọi nhu cầu. Không chỉ là nơi mua sắm cây cảnh, An Phát còn
+                mang đến cảm giác thư giãn và lan tỏa niềm vui xanh đến mọi
+                người.
               </p>
             </motion.div>
 
@@ -64,7 +66,7 @@ const Footer = () => {
                     href="/menu"
                     className="transition-colors hover:text-[#d88453]"
                   >
-                    Thực đơn
+                    Sản phẩm
                   </a>
                 </motion.li>
                 <motion.li variants={itemVariants} custom={3}>
@@ -126,13 +128,12 @@ const Footer = () => {
                 ))}
               </div>
               <motion.p
-                className="pb-2 pt-14 font-josefin text-base font-bold text-black lg:pb-6"
+                className="pb-2 pt-14 font-josefin text-base font-bold text-[#633c02] lg:pb-6"
                 variants={itemVariants}
                 custom={10}
               >
-                © 2024 BAMOS
-                <span className="text-[#C63402]">COFFEE</span>. Designer by
-                Group 1
+                © 2024 CÂY CẢNH
+                <span className="text-[#00864a]"> AN PHÁT</span>.
               </motion.p>
             </motion.div>
           </div>

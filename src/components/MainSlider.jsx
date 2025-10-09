@@ -1,28 +1,62 @@
-import imgBackground from "../../assets/img_background.png"; // Đường dẫn tới ảnh
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const MainSlider = () => {
+  const words = useMemo(() => ["lắng", "lành", "khỏe", "yêu"], []);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const typingIntervalRef = useRef(null);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    const typingSpeed = isDeleting ? 60 : 110; // ms per char
+    const holdDuration = 900; // ms to hold full word before deleting
+
+    if (typingIntervalRef.current) clearTimeout(typingIntervalRef.current);
+
+    const handleType = () => {
+      if (!isDeleting) {
+        const next = currentWord.slice(0, displayText.length + 1);
+        setDisplayText(next);
+        if (next === currentWord) {
+          typingIntervalRef.current = setTimeout(
+            () => setIsDeleting(true),
+            holdDuration,
+          );
+          return;
+        }
+      } else {
+        const next = currentWord.slice(0, displayText.length - 1);
+        setDisplayText(next);
+        if (next === "") {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+          return;
+        }
+      }
+      typingIntervalRef.current = setTimeout(handleType, typingSpeed);
+    };
+
+    typingIntervalRef.current = setTimeout(handleType, typingSpeed);
+
+    return () => {
+      if (typingIntervalRef.current) clearTimeout(typingIntervalRef.current);
+    };
+  }, [displayText, isDeleting, wordIndex, words]);
+
   return (
-    <div className="flex flex-col-reverse items-center justify-center gap-x-0 lg:flex-row">
-      <div className="content mb-8 mt-8 px-4 text-[#633c02] lg:ml-32 lg:mt-8">
-        <h1 className="animated-title mb-3 text-4xl font-bold lg:text-5xl">
-          ĐÔNG ĐẾN GIẢM 30%
+    <div className="flex items-center justify-center pt-32 pb-16">
+      <div className="px-4 text-center text-[#633c02]">
+        <h1 className="mb-4 font-josefin text-4xl font-bold lg:text-6xl">
+          Đem cây cảnh <span className="text-[#00864a]">An Phát</span> về
         </h1>
-        <h4 className="mb-6 font-josefin text-2xl">
-          Áp dụng cho học sinh sinh viên
-        </h4>
-        <a
-          href="/menu"
-          className="btn-buy rounded-lg bg-[#d88453] px-6 font-josefin py-3 text-2xl text-white hover:rounded-3xl hover:bg-[#633c02] "
-        >
-          Mua ngay
-        </a>
-      </div>
-      <div className="image-container mt-4 lg:mt-0">
-        <img
-          src={imgBackground}
-          alt="Background"
-          className="background-image h-auto w-full"
-        />
+        <h2 className="mx-auto inline-block min-h-[1.5em] font-josefin text-4xl font-bold lg:text-6xl">
+          để <span className="text-[#00864a]">{displayText}</span>
+          <span
+            className="ml-1 inline-block w-1 animate-pulse bg-[#00864a]"
+            style={{ height: "1em" }}
+          />
+        </h2>
       </div>
     </div>
   );
