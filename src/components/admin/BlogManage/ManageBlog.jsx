@@ -8,6 +8,7 @@ import {
   faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { toast } from "react-toastify";
 import AddBlog from "./AddBlog";
 import UpdateBlog from "./UpdateBlog";
 import Loading from "../../website/Loading";
@@ -21,6 +22,7 @@ const ManageBlog = () => {
   const [loading, setLoading] = useState(true);
   const [displayHotFilter, setDisplayHotFilter] = useState("all");
   const [displayTypeFilter, setDisplayTypeFilter] = useState("all");
+  const [deleteConfirm, setDeleteConfirm] = useState(null);
 
   // Lọc blog dựa trên từ khóa tìm kiếm
   useEffect(() => {
@@ -44,6 +46,37 @@ const ManageBlog = () => {
   const handleEditClick = (blog) => {
     setSelectedBlog(blog);
     setEditFormVisible(true);
+  };
+
+  const handleDeleteClick = (blog) => {
+    setDeleteConfirm(blog);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deleteConfirm) return;
+
+    try {
+      await axios.delete(
+        `https://cayxanhanphatbe-production.up.railway.app/api/blogs/${deleteConfirm._id}`,
+      );
+
+      // Cập nhật danh sách blog sau khi xóa thành công
+      setBlogList((prev) =>
+        prev.filter((blog) => blog._id !== deleteConfirm._id),
+      );
+
+      // Đóng modal xác nhận
+      setDeleteConfirm(null);
+
+      toast.success("Xóa blog thành công!");
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+      toast.error("Có lỗi xảy ra khi xóa blog!");
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteConfirm(null);
   };
 
   const formatDate = (timestamp) => {
@@ -85,9 +118,12 @@ const ManageBlog = () => {
       setBlogList(updatedBlogs);
 
       // Gửi yêu cầu API để cập nhật trạng thái trên server
-      await axios.put(`https://cayxanhanphatbe-production.up.railway.app/api/blogs/${id}`, {
-        displayHot: updatedBlogs.find((blog) => blog._id === id).displayHot,
-      });
+      await axios.put(
+        `https://cayxanhanphatbe-production.up.railway.app/api/blogs/${id}`,
+        {
+          displayHot: updatedBlogs.find((blog) => blog._id === id).displayHot,
+        },
+      );
     } catch (error) {
       console.error("Error updating display hot:", error);
 
@@ -113,10 +149,13 @@ const ManageBlog = () => {
       setBlogList(updatedBlogs);
 
       // Gửi yêu cầu API để cập nhật trạng thái trên server
-      await axios.put(`https://cayxanhanphatbe-production.up.railway.app/api/blogs/${id}`, {
-        displayBanner: updatedBlogs.find((blog) => blog._id === id)
-          .displayBanner,
-      });
+      await axios.put(
+        `https://cayxanhanphatbe-production.up.railway.app/api/blogs/${id}`,
+        {
+          displayBanner: updatedBlogs.find((blog) => blog._id === id)
+            .displayBanner,
+        },
+      );
     } catch (error) {
       console.error("Error updating display banner:", error);
 
@@ -296,7 +335,10 @@ const ManageBlog = () => {
                             </span>
                           </div>
                           <div className="group relative">
-                            <button className="rounded-md px-3 py-1 text-center text-red-400 hover:rounded-full hover:bg-slate-300">
+                            <button
+                              className="rounded-md px-3 py-1 text-center text-red-400 hover:rounded-full hover:bg-slate-300"
+                              onClick={() => handleDeleteClick(blog)}
+                            >
                               <FontAwesomeIcon icon={faTrash} />
                             </button>
                             <span className="absolute bottom-full left-1/3 mb-4 -translate-x-1/2 transform whitespace-nowrap rounded-md bg-gray-800 px-2 py-2 text-sm text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
@@ -333,6 +375,39 @@ const ManageBlog = () => {
             );
           }}
         />
+      )}
+
+      {/* Modal xác nhận xóa */}
+      {deleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="rounded-lg bg-white p-6 shadow-xl">
+            <h3 className="mb-4 text-lg font-bold text-gray-900">
+              Xác nhận xóa blog
+            </h3>
+            <p className="mb-6 text-gray-600">
+              Bạn có chắc chắn muốn xóa blog &quot;{deleteConfirm.title}&quot;
+              không?
+              <br />
+              <span className="font-semibold text-red-600">
+                Hành động này không thể hoàn tác!
+              </span>
+            </p>
+            <div className="flex justify-end space-x-4">
+              <button
+                onClick={handleDeleteCancel}
+                className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-400"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleDeleteConfirm}
+                className="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+              >
+                Xóa
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
