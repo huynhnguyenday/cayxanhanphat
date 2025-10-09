@@ -195,7 +195,7 @@ const DashBoard = () => {
           />
           <SidebarItem
             icon={faClipboardList}
-            label="Thực đơn"
+            label="Danh mục"
             isSidebarExpanded={isSidebarExpanded}
             onClick={() => handleSetActiveComponent("Category")}
             isActive={activeComponent === "Category"}

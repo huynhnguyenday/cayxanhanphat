@@ -160,7 +160,7 @@ const Menu = () => {
           <div className="flex flex-wrap gap-0">
             {currentProducts.map((item) => (
               <div
-                className="group relative mt-8 flex h-[340px] w-[185px] flex-col justify-between border-l border-r border-gray-300 bg-white p-3 text-center transition-shadow ease-linear lg:h-[340px] lg:w-[250px]"
+                className="group relative mt-8 flex h-[340px] w-[185px] flex-col justify-between border-l border-r border-gray-300 bg-white text-center transition-shadow ease-linear lg:h-[340px] lg:w-[250px]"
                 key={item._id}
               >
                 <div>
@@ -168,12 +168,12 @@ const Menu = () => {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="mx-auto h-[216px] transition-transform ease-linear group-hover:scale-[1.18]"
+                      className="h-[240px] w-full object-cover transition-transform ease-linear"
                     />
                   </Link>
                 </div>
 
-                <div className="mb-12 mt-4">
+                <div className="mb-12 mt-1">
                   <h6 className="text-sm font-bold text-[#333]">
                     <Link
                       to={`/detailfood/${item._id}`}

@@ -47,7 +47,7 @@ const PricingContentMenu = ({ closeFlyout }) => {
     <div className="flex h-[480px] w-[1200px] bg-white shadow-xl">
       <div className="w-[400px] bg-[#2385a3] p-6 pr-4">
         <div className="mb-3 space-y-3">
-          <h3 className="pb-4 text-3xl font-bold text-white">THỰC ĐƠN</h3>
+          <h3 className="pb-4 text-3xl font-bold text-white">SẢN PHẨM</h3>
           {loading ? (
             // Hiển thị phần loading nếu dữ liệu chưa được tải
             <div className="flex h-[255px] w-full items-center justify-center lg:h-[50px]">
@@ -71,7 +71,7 @@ const PricingContentMenu = ({ closeFlyout }) => {
           onClick={handleNavigateToMenu}
           className="w-1/2 rounded-lg border-2 border-[#d88453] bg-[#d88453] px-4 py-2 font-semibold text-white transition-colors hover:rounded-3xl hover:border-[#103e4c] hover:bg-[#103e4c]"
         >
-          Xem menu
+          Xem ngay
         </button>
       </div>
 
@@ -79,7 +79,7 @@ const PricingContentMenu = ({ closeFlyout }) => {
         {/* Tiêu đề mới */}
         <div className="w-full py-4 pl-6 text-start">
           <h2 className="text-2xl font-bold text-[#633c02]">
-            Trend mới thử ngay!
+            Tìm hiểu ngay!
           </h2>
         </div>
 

@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import ModalProduct from "./ModalProduct";
 import axios from "axios";
@@ -17,17 +15,6 @@ const ProductSlider = () => {
   const swiperRef = useRef(null);
   const [showArrows, setShowArrows] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.5 });
-
-  useEffect(() => {
-    if (inView && !hasAnimated) {
-      controls.start("visible");
-      setHasAnimated(true); // Đánh dấu là đã chạy
-    }
-  }, [controls, inView, hasAnimated]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -63,11 +50,10 @@ const ProductSlider = () => {
   return (
     <div
       className="product-slider relative mx-auto mb-20 max-w-screen-xl overflow-visible bg-white px-2 py-10 lg:px-5"
-      ref={ref}
       onMouseEnter={() => setShowArrows(true)}
       onMouseLeave={() => setShowArrows(false)}
     >
-      <div className="slider-title my-6 text-center text-4xl font-josefin font-bold text-[#00864a]">
+      <div className="slider-title my-6 text-center font-josefin text-4xl font-bold text-[#00864a]">
         Sản phẩm bán chạy
       </div>
       <div className="divider mx-auto mb-14 h-1 w-12 bg-[#00864a]"></div>
@@ -91,38 +77,22 @@ const ProductSlider = () => {
             1024: { slidesPerView: 5 },
           }}
         >
-          {products.map((product, index) => (
+          {products.map((product) => (
             <SwiperSlide key={product._id}>
-              <motion.div
-                className="product-card group relative flex h-[350px] flex-col justify-between border-l border-r border-[#e7e6e6] bg-white p-4 text-center hover:border-l-2 hover:border-r-2 hover:border-t-2 hover:border-[#d5d5d5]"
-                initial="hidden"
-                animate={controls}
-                variants={{
-                  hidden: { opacity: 0, y: 100 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      delay: index * 0.2,
-                      type: "spring",
-                      stiffness: 80,
-                    },
-                  },
-                }}
-              >
+              <div className="product-card group relative flex h-[340px] flex-col justify-start border-l border-r border-[#e7e6e6] bg-white text-center hover:border-l-2 hover:border-r-2 hover:border-t-2 hover:border-[#d5d5d5]">
                 <div className="product-image">
                   <Link to={`/detailfood/${product._id}`}>
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="mx-auto h-[223px] transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+                      className="h-[223px] w-full object-cover"
                     />
                   </Link>
                 </div>
                 <div className="product-bubble absolute right-4 top-2 rounded-full bg-[#ff4d4f] px-2 pb-1 pt-2 font-josefin text-sm text-white">
                   HOT
                 </div>
-                <div className="product-info mb-10 mt-2">
+                <div className="product-info mt-2">
                   <h6 className="product-name line-clamp-1 font-josefin text-xl font-bold text-[#00561e]">
                     <Link to={`/detailfood/${product._id}`}>
                       {product.name.split(" ").slice(0, 4).join(" ")}
@@ -152,7 +122,7 @@ const ProductSlider = () => {
                     Thêm vào giỏ hàng
                   </button>
                 </div>
-              </motion.div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -50,9 +50,9 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-20 flex h-[80px] items-center justify-between bg-white px-4 py-4 shadow-lg sm:px-8 md:px-16 lg:px-32">
-      <a href="/home" className="pl-1 text-2xl font-bold sm:pl-0 sm:text-4xl">
-        <span className="text-black">Bamos</span>
-        <span className="text-[#c63402]">Coffee</span>
+      <a href="/home" className="pl-1 text-xl font-bold sm:pl-0 sm:text-3xl">
+        <span className="text-[#633c02]">CÂY CẢNH</span>
+        <span className="text-[#00864a]"> AN PHÁT</span>
       </a>
       <div className="hidden space-x-6 sm:flex">
         <NavbarLink />

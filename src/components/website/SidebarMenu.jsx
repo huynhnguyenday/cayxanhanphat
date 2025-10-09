@@ -22,9 +22,9 @@ const SidebarMenu = ({ isMobileMenuOpen, toggleMobileMenu }) => {
         }`}
       >
         <div className="flex">
-          <div className="pl-4 pt-9 text-4xl font-bold">
-            <span className="text-black">Bamos</span>
-            <span className="text-[#c63402]">Coffee</span>
+          <div className="pl-4 pt-9 text-[23px] font-bold">
+            <span className="text-[#633c02]">CÂY CẢNH</span>
+            <span className="text-[#00864a]"> AN PHÁT</span>
           </div>
 
           <div className="flex justify-end pb-8 pl-3">
