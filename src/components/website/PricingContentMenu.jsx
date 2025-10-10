@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import imgdropdown1 from "../../../assets/imgdropdown1.png";
-import imgdropdown2 from "../../../assets/imgdropdown2.png";
-import imgdropdown3 from "../../../assets/imgdropdown3.png";
+import new1 from "../../../assets/new1.jpg";
+import new2 from "../../../assets/new2.jpg";
+import new3 from "../../../assets/new3.jpg";
 import Loading from "./Loading";
 
 const PricingContentMenu = ({ closeFlyout }) => {
@@ -78,9 +78,7 @@ const PricingContentMenu = ({ closeFlyout }) => {
       <div className="flex w-full flex-col">
         {/* Tiêu đề mới */}
         <div className="w-full py-4 pl-6 text-start">
-          <h2 className="text-2xl font-bold text-[#633c02]">
-            Tìm hiểu ngay!
-          </h2>
+          <h2 className="text-2xl font-bold text-[#633c02]">Tìm hiểu ngay!</h2>
         </div>
 
         <div className="flex pl-6">
@@ -88,17 +86,17 @@ const PricingContentMenu = ({ closeFlyout }) => {
           <div className="w-1/3 text-start">
             <div className="overflow-hidden">
               <img
-                src={imgdropdown2}
-                alt="imgdropdown1"
+                src={new2}
+                alt="new1"
                 className="h-[200px] w-full object-cover"
               />
             </div>
             <h3 className="mt-2 pt-2 text-2xl font-bold text-orange-700">
-              Trà sữa nung
+              Thanh Lịch Xanh
             </h3>
             <p className="mt-1 h-[60px] font-josefin text-base text-gray-600">
-              Hòa quyện giữa trà sữa và các hương liệu, nung nóng tạo hương vị
-              đặc biệt.
+              Cây dáng cao thanh thoát, mang vẻ đẹp hiện đại và tinh tế, giúp
+              không gian thêm sang trọng và tươi mới.
             </p>
             <button
               className="mt-2 pt-4 font-josefin text-xl font-semibold text-orange-700 hover:text-orange-900"
@@ -112,17 +110,17 @@ const PricingContentMenu = ({ closeFlyout }) => {
           <div className="w-1/3 px-4 text-start">
             <div className="overflow-hidden">
               <img
-                src={imgdropdown3}
-                alt="imgdropdown2"
+                src={new3}
+                alt="new2"
                 className="h-[200px] w-full object-cover"
               />
             </div>
             <h3 className="mt-2 pt-2 text-2xl font-bold text-orange-700">
-              Trà Chanh Giã Tay
+              Sắc Lá Mềm
             </h3>
             <p className="mt-1 h-[60px] font-josefin text-base text-gray-600">
-              Hương vị Chanh nước hoa thơm ngát kết hợp với trà tạo hương vị
-              tinh tế và độc đáo.
+              Những chiếc lá tròn sọc xanh mềm mại, tạo cảm giác thư thái và gần
+              gũi.
             </p>
             <button
               className="mt-2 pt-4 font-josefin text-xl font-semibold text-orange-700 hover:text-orange-900"
@@ -136,17 +134,17 @@ const PricingContentMenu = ({ closeFlyout }) => {
           <div className="w-1/3 px-4 text-start">
             <div className="overflow-hidden">
               <img
-                src={imgdropdown1}
-                alt="imgdropdown3"
+                src={new1}
+                alt="new3"
                 className="h-[200px] w-full object-cover"
               />
             </div>
             <h3 className="mt-2 pt-2 text-2xl font-bold text-orange-700">
-              Trà Mãng Cầu
+              Xanh Bình An
             </h3>
             <p className="mt-1 h-[60px] font-josefin text-base text-gray-600">
-              Kết hợp hương vị ngọt ngào của mãng cầu mang đến sự tươi mới và
-              hấp dẫn
+              Cây lá lớn vươn cao đầy sức sống, tượng trưng cho may mắn và bình
+              an.
             </p>
             <button
               className="mt-2 pt-4 font-josefin text-xl font-semibold text-orange-700 hover:text-orange-900"

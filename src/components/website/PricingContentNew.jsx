@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import imgnews1 from "../../../assets/imgnews1.png";
-import imgnews2 from "../../../assets/imgnews2.png";
-import imgnews3 from "../../../assets/imgnews3.png";
+import imgnew1 from "../../../assets/imgnew1.jpg";
+import imgnew2 from "../../../assets/imgnew2.jpg";
+import imgnew3 from "../../../assets/imgnew3.jpg";
 import Loading from "./Loading"; // Import your loading component
 
 const PricingContentNew = ({ closeFlyout }) => {
@@ -40,7 +40,7 @@ const PricingContentNew = ({ closeFlyout }) => {
     navigate("/news");
   };
 
-  const overlayTitles = ["TỔ CHỨC EVENT", "ACOUSTIC", "BÓI BÀI TAROT"];
+  const overlayTitles = ["CHĂM CÂY", "KHÔNG GIAN", "GÓC XANH"];
 
   return (
     <div className="flex h-[480px] w-[1200px] bg-white shadow-xl">
@@ -76,20 +76,20 @@ const PricingContentNew = ({ closeFlyout }) => {
 
       <div className="flex w-full flex-col">
         <div className="flex">
-          {[imgnews2, imgnews3, imgnews1].map((image, index) => (
+          {[imgnew2, imgnew3, imgnew1].map((image, index) => (
             <div
               key={index}
               className="group relative w-1/3 px-4 py-4 text-start"
             >
               {/* Tiêu đề overlay */}
-              <div className="absolute bottom-6 left-5 z-10 rounded-md px-3 py-1 text-2xl font-bold text-white">
+              <div className="absolute bottom-6 left-5 z-10 rounded-md bg-[#00864a] bg-opacity-60 px-3 py-1 text-2xl font-bold text-white">
                 {overlayTitles[index]}
               </div>
               {/* Ảnh */}
               <div className="overflow-hidden">
                 <img
                   src={image}
-                  alt={`imgnews${index + 1}`}
+                  alt={`imgnew${index + 1}`}
                   className="h-[440px] w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>

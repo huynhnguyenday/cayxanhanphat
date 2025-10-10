@@ -5,7 +5,7 @@ const MapWithCards = () => {
         {/* Tiêu đề */}
         <div className="mb-6 w-full">
           <h2 className="mt-10 text-center font-josefin text-4xl font-bold text-[#633c02] lg:text-5xl">
-            Danh sách cửa hàng
+            Địa chỉ cửa hàng
           </h2>
         </div>
 
@@ -13,7 +13,7 @@ const MapWithCards = () => {
         <div className="flex w-full flex-col gap-6 pb-32 pt-6 md:flex-row">
           {/* Ô thông tin bên trái */}
           <div className="flex h-[550px] w-full flex-col items-center justify-center bg-[#f7f6f6] p-6 text-center shadow md:w-1/3">
-            <h3 className="mb-4 font-oswald text-2xl font-bold text-[#633c02]">
+            <h3 className="mb-4 font-josefin text-4xl font-bold text-[#633c02]">
               Thông tin liên hệ
             </h3>
             <div className="space-y-5 pt-2 font-josefin text-[18px] text-[#333]">
@@ -21,7 +21,7 @@ const MapWithCards = () => {
                 <span className="font-semibold text-[#633c02]">Địa chỉ:</span>
                 <br />
                 <span className="text-[16px] leading-tight text-[#00864a]">
-                  70 Đường số 52, An Phú,TP Thủ Đức,TP Hồ Chí Minh.
+                  70 Đường số 52, An Phú,TP Thủ Đức.
                 </span>
               </p>
               <p>
